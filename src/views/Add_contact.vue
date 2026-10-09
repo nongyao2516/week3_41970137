@@ -1,26 +1,62 @@
 <template>
-  <div class="container mt-4 col-md-4 bg-body-secondary ">
-    <h2 class="text-center mb-3">ข้อมูลติดต่อ</h2>
+  <div class="container mt-4 col-md-4 bg-body-secondary">
+    <h2 class="text-center mb-3">เพิ่มข้อมูลติดต่อ</h2>
+
     <form @submit.prevent="addData">
+
       <div class="mb-2">
-        <input v-model="contacts.subject" class="form-control" placeholder="subject" required />
+        <input
+          v-model="contact.subject"
+          class="form-control"
+          placeholder="หัวข้อ"
+          required
+        />
       </div>
+
       <div class="mb-2">
-        <input v-model="customer.lastName" class="form-control" placeholder="นามสกุล" required />
+        <input
+          v-model="contact.detail"
+          class="form-control"
+          placeholder="รายละเอียด"
+          required
+        />
       </div>
+
       <div class="mb-2">
-        <input  v-model="customer.phone" class="form-control" placeholder="เบอร์โทร" required />
+        <input
+          v-model="contact.fullname"
+          class="form-control"
+          placeholder="ชื่อ-นามสกุล"
+          required
+        />
       </div>
+
       <div class="mb-2">
-        <input v-model="customer.username" class="form-control" placeholder="ชื่อผู้ใช้" required />
+        <input
+          v-model="contact.email"
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          required
+        />
       </div>
-      <div class="mb-2">
-        <input type="password" v-model="customer.password" class="form-control" placeholder="รหัสผ่าน" required />
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary mb-4">
+          บันทึก
+        </button>
+
+        &nbsp;
+
+        <button
+          type="button"
+          class="btn btn-secondary mb-4"
+          @click="resetForm"
+        >
+          ยกเลิก
+        </button>
       </div>
-      <div class="text-center mt-4 ">
-      <button type="submit" class="btn btn-primary mb-4">บันทึก</button> &nbsp;
-      <button type="reset" class="btn btn-secondary mb-4">ยกเลิก</button>
-      </div>
+
     </form>
 
     <div v-if="message" class="alert alert-info mt-3">
@@ -29,40 +65,64 @@
   </div>
 </template>
 
-
 <script>
 export default {
   data() {
     return {
-      contacts: {
+      contact: {
         subject: "",
         detail: "",
         fullname: "",
-        email: ""  
+        email: ""
       },
+
       message: ""
     };
   },
+
   methods: {
+
     async addData() {
       try {
-        const res = await fetch("http://localhost/week3_41970137/php_api/add_contact.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(this.contacts)
-        });
+        const res = await fetch(
+          "http://localhost/week3_41970137/php_api/add_contact.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.contact)
+          }
+        );
+
         const data = await res.json();
+
         this.message = data.message;
 
         if (data.success) {
-          // ✅ เคลียร์ข้อมูลใน textbox หลังบันทึกสำเร็จ
-          this.contacts = { subject: "", detail: "", fullname: "", email: "" };
+          this.contact = {
+            subject: "",
+            detail: "",
+            fullname: "",
+            email: ""
+          };
         }
 
       } catch (err) {
         this.message = "เกิดข้อผิดพลาด: " + err.message;
       }
+    },
+
+    resetForm() {
+      this.contact = {
+        subject: "",
+        detail: "",
+        fullname: "",
+        email: ""
+      };
+
+      this.message = "";
     }
   }
-}
+};
 </script>

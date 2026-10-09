@@ -5,7 +5,7 @@
     
     <!-- ตารางแสดงข้อมูลลูกค้า -->
      <div class="text-end mb-3">
-      <a href="/add_customer" class="btn btn-primary" >Add+</a>
+      <a href="/add_contact" class="btn btn-primary" >Add+</a>
      </div>
 
     <table class="table table-bordered table-striped">
