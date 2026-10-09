@@ -12,11 +12,10 @@
       <thead class="table-dark">
         <tr>
           <th>ลำดับที่</th>        <!-- index -->
-          <th>รหัสลูกค้า</th>     <!-- customer_id -->
-          <th>ชื่อ</th>            <!-- firstName -->
-          <th>นามสกุล</th>        <!-- lastName -->
-          <th>เบอร์โทร</th>       <!-- phone -->
-          <th>ชื่อผู้ใช้</th>      <!-- username -->
+          <th>หัวข้อ</th>            <!-- firstName -->
+          <th>รายละเอียด</th>        <!-- lastName -->
+          <th>ชื่อ-นามสกุล</th>       <!-- phone -->
+          <th>อีเมล</th>      <!-- username -->
         </tr>
       </thead>
 
@@ -24,7 +23,6 @@
         <!-- วนลูปข้อมูล customers -->
         <tr v-for="(item,index) in contacts" :key="item.contact_id">
           <td>{{ index + 1 }}</td>       <!-- แสดงลำดับที่ (เริ่มจาก 1) -->
-          <td>{{ item.contact_id }}</td> <!-- รหัสลูกค้า -->
           <td>{{ item.subject }}</td>   <!-- ชื่อ -->
           <td>{{ item.detail }}</td>    <!-- นามสกุล -->
           <td>{{ item.fullname }}</td>       <!-- เบอร์โทร -->

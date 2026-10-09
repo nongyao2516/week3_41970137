@@ -16,14 +16,21 @@
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="#">Show Product</router-link>
+            <router-link class="nav-link" to="/customer_crud">CustomerCRUD</router-link>
           </li>
            <li class="nav-item">
             <router-link class="nav-link" to="/customer">Customer</router-link>
-          </li>
-           <li class="nav-item">
-            <router-link class="nav-link" to="/employee">Employee</router-link>
-          </li>
+          </li>   
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Employee
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/employee">Employee</a></li>
+            <li><a class="dropdown-item" href="/employee_crud">Employee CRUD</a></li>      
+          </ul>
+        </li>
+
            <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Register
