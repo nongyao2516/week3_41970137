@@ -51,6 +51,21 @@ const routes = [
     path: '/employee_crud',
     name: 'employee_crud',
     component: () => import( '../views/Employee_crud.vue')
+  },
+  {
+    path: '/product',
+    name: 'product',
+    component: () => import( '../views/Product.vue')
+  },
+   {
+    path: '/show_product',
+    name: 'show_product',
+    component: () => import( '../views/Show_product.vue')
+  },
+   {
+    path: '/asset',
+    name: 'asset',
+    component: () => import( '../views/Asset.vue')
   }
 ]
 
